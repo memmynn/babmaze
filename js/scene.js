@@ -1,6 +1,7 @@
 var createScene = function(){
     // create a basic BJS Scene object
     var scene = new BABYLON.Scene(engine);
+    
 
     // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
     camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0,0 ,0), scene);
@@ -30,7 +31,7 @@ var createScene = function(){
 
     camera.applyGravity = true;
 
-    camera.ellipsoid = new BABYLON.Vector3(1, 1.5, 1);
+    camera.ellipsoid = new BABYLON.Vector3(1, 2, 1);
     // Set the near clipping plane
 camera.minZ = 0.1;
 
@@ -53,18 +54,21 @@ camera.minZ = 0.1;
     // halloweenIncarnate.range = 20;
     
  var alien = new BABYLON.Node("alien", scene)
+ var gltfMesh;
+
     BABYLON.SceneLoader.ImportMesh("", "Alien/", "Alien.gltf", scene, function (meshes) {
-        var gltfMesh = meshes[0];
-        alien
-      
-        gltfMesh.setParent(alien);
+        gltfMesh = meshes[0];
+        //gltfMesh.physicsImpostor = new BABYLON.PhysicsImpostor(gltfMesh, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 1, restitution: 0.9 }, scene);
+
+        gltfMesh.setParent(alien)
         gltfMesh.position = new BABYLON.Vector3(3, 9, -166)
         gltfMesh.rotation.y = Math.PI
-gltfMesh.scaling = new BABYLON.Vector3(4, -4, 4)
-        return gltfMesh
-       // scene.createDefaultCameraOrLight(true, true, true)
-        //scene.createDefaultEnvironment();
+gltfMesh.scaling = new BABYLON.Vector3(4, -4, 4)      
+
 });
+
+        
+
         
     BABYLON.SceneOptimizer.OptimizeAsync(scene);
     // return the created scene
