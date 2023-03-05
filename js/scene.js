@@ -13,7 +13,7 @@ var createScene = function(){
     light2.intensity = 0.3;
 
 
-    camera.speed = 1;
+   // camera.speed = 1;
 
     camera.keysUp = [87, 38]; // W
     camera.keysDown = [83, 40]; // S
@@ -26,11 +26,13 @@ var createScene = function(){
     // attach the camera to the canvas
     camera.attachControl(canvas, false);
 
-    scene.gravity = new BABYLON.Vector3(0,-2,0);
+    scene.gravity = new BABYLON.Vector3(0,-1,0);
 
     camera.applyGravity = true;
 
-    camera.ellipsoid = new BABYLON.Vector3(1, 2, 1);
+    camera.ellipsoid = new BABYLON.Vector3(1, 1.5, 1);
+    // Set the near clipping plane
+camera.minZ = 0.1;
 
     scene.collisionsEnabled = true;
     camera.checkCollisions = true;

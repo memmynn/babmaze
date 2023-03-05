@@ -1,4 +1,6 @@
-  window.addEventListener('DOMContentLoaded', function() {
+ 
+ window.addEventListener('DOMContentLoaded', function() {
+   
       canvas = document.getElementById('renderCanvas');
       engine = new BABYLON.Engine(canvas, true);
 
@@ -18,6 +20,7 @@ canvas.addEventListener("click", function() {
 });
 
       engine.runRenderLoop(function() {
+    
           //miniMap.drawMap();
          scene.render();
       });
@@ -77,17 +80,22 @@ canvas.addEventListener("click", function() {
              console.log(Math.round(camera.position.x), Math.round(camera.position.y), Math.round(camera.position.z));
          }
       };
-      camera.speed = 0.3;
+      camera.speed = 1;
+      
+      // Set the angularSensibility
+        camera.angularSensibility = 5000;
+// Set the inertia to 0
+camera.inertia = 0.7;  
       window.onkeydown = function(e){
           var key = e.keyCode ? e.keyCode : e.which;
           if(key == 16){
-              camera.speed = 0.5;
+              camera.speed = 1.4;
           }
       };
       window.onkeyup = function(e){
           var key = e.keyCode ? e.keyCode : e.which;
           if(key == 16){
-              camera.speed = 0.3;
+              camera.speed = 1;
           }
       };
 
