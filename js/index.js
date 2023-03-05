@@ -1,4 +1,34 @@
- 
+function stopGameplay() {
+    engine.stopRenderLoop(); // Stop the rendering loop
+    canvas.removeEventListener("pointerdown", onPointerDown); // Disable player input
+    canvas.removeEventListener("pointerup", onPointerUp);
+    canvas.removeEventListener("pointermove", onPointerMove);
+  };
+
+function isCameraPositionEqual(camera, x, y, z) {
+    var cameraPosition = {}
+    // let's copy all user properties into it
+for (let key in camera.position) {
+    cameraPosition[key] = camera.position[key];
+  }
+    cameraPosition._x = Math.floor(cameraPosition._x)
+    cameraPosition._y = Math.floor(cameraPosition._y)
+    cameraPosition._z = Math.floor(cameraPosition._z)
+
+     if(cameraPosition.equalsToFloats(x, y, z)) {
+        console.log("camerapositionisequal")
+        return true
+     };
+  }
+  // Define a function that checks for the win condition
+function hasPlayerWon() {
+    // Check if the player has won the game
+    if (isCameraPositionEqual(camera, 4, 9, 146)){
+       return stopGameplay()    }
+    // ...
+    // Return true or false depending on whether the win condition is met
+  };
+
  window.addEventListener('DOMContentLoaded', function() {
    
       canvas = document.getElementById('renderCanvas');
@@ -20,6 +50,7 @@ canvas.addEventListener("click", function() {
 });
 
       engine.runRenderLoop(function() {
+        hasPlayerWon()
     
           //miniMap.drawMap();
          scene.render();
