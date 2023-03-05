@@ -78,8 +78,8 @@ function spawns(board){
             start.material.alpha = 0.4;
 
             camera.position.x = -(i-xOffset) * size;
-            camera.position.y = size;
-            camera.position.z = -yOffset * size - size;
+            camera.position.y =  9;
+            camera.position.z = -153
 
         }
     });

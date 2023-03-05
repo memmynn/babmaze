@@ -6,7 +6,8 @@ var createScene = function(){
     // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
     camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0,0 ,0), scene);
     //BABYLON.ArcRotateCamera("ArcRotateCamera", Math.PI/2, Math.PI/4, 200, new BABYLON.Vector3(0, 0, 0), scene);
-
+    //camera.position = new BABYLON.Vector3(1, 9, -150);
+    
     var light2 = new BABYLON.HemisphericLight("Hemi0", new BABYLON.Vector3(0, 1, 0), scene);
     light2.diffuse = new BABYLON.Color3(1, 1, 1);
     light2.specular = new BABYLON.Color3(1, 1, 1);
@@ -61,7 +62,7 @@ camera.minZ = 0.1;
         //gltfMesh.physicsImpostor = new BABYLON.PhysicsImpostor(gltfMesh, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 1, restitution: 0.9 }, scene);
 
         gltfMesh.setParent(alien)
-        gltfMesh.position = new BABYLON.Vector3(3, 9, -166)
+        gltfMesh.position = new BABYLON.Vector3(3, 9, -163)
         gltfMesh.rotation.y = Math.PI
 gltfMesh.scaling = new BABYLON.Vector3(4, -4, 4)      
 
