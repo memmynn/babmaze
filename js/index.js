@@ -5,17 +5,15 @@ function stopGameplay() {
     canvas.removeEventListener("pointermove", onPointerMove);
   };
 
-function isCameraPositionEqual(camera, x, y, z) {
+function isCameraPositionEqual(camera, z) {
     var cameraPosition = {}
     // let's copy all user properties into it
 for (let key in camera.position) {
     cameraPosition[key] = camera.position[key];
   }
-    cameraPosition._x = Math.floor(cameraPosition._x)
-    cameraPosition._y = Math.floor(cameraPosition._y)
-    cameraPosition._z = Math.floor(cameraPosition._z)
+    
 
-     if(cameraPosition.equalsToFloats(x, y, z)) {
+     if(cameraPosition._z > z) {
         console.log("camerapositionisequal")
         return true
      };
@@ -23,7 +21,7 @@ for (let key in camera.position) {
   // Define a function that checks for the win condition
 function hasPlayerWon() {
     // Check if the player has won the game
-    if (isCameraPositionEqual(camera, 4, 9, 146)){
+    if (isCameraPositionEqual(camera, 148)){
        return stopGameplay()    }
     // ...
     // Return true or false depending on whether the win condition is met
