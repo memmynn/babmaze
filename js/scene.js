@@ -64,8 +64,22 @@ camera.minZ = 0.1;
         gltfMesh.setParent(alien)
         gltfMesh.position = new BABYLON.Vector3(3, 9, -163)
         gltfMesh.rotation.y = Math.PI
-gltfMesh.scaling = new BABYLON.Vector3(4, -4, 4)      
+gltfMesh.scaling = new BABYLON.Vector3(4, 4, 4)      
+// Create a function to update the enemy's position and rotation
+function updateEnemy() {
+    // Calculate the distance between the enemy and the player
+    const distance = BABYLON.Vector3.Distance(gltfMesh.position, camera.position);
 
+    // Move the enemy towards the player
+    const speed = 0.01; // adjust as needed
+    gltfMesh.translate(BABYLON.Axis.Z, speed, BABYLON.Space.LOCAL);
+
+    // Make the enemy look at the player
+    gltfMesh.lookAt(camera.position);
+}
+
+// Register the update function to be called on every frame update
+scene.onBeforeRenderObservable.add(updateEnemy);
 });
 
         

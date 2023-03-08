@@ -1,3 +1,4 @@
+
 function stopGameplay() {
     engine.stopRenderLoop(); // Stop the rendering loop
     canvas.removeEventListener("pointerdown", onPointerDown); // Disable player input
@@ -31,10 +32,10 @@ function hasPlayerWon() {
    
       canvas = document.getElementById('renderCanvas');
       engine = new BABYLON.Engine(canvas, true);
+      board = makeMaze(15,15);
 
       scene = createScene();
 
-      board = makeMaze(15,15);
 
       //miniMap = miniMap().board(board);
     
@@ -59,10 +60,8 @@ canvas.addEventListener("click", function() {
       });
 
 
-
-
-
       buildWorld(board);
+
 
       var cameraJump = function() {
 		var cam = scene.cameras[0];

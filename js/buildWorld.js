@@ -1,6 +1,6 @@
 
 function buildWorld(board){
-  var x = 0, y = 0,
+  var x = 0, y = 0;
       walls = [],
       floorTiles = [];
 
@@ -10,7 +10,7 @@ function buildWorld(board){
     //   camera.position = new Vector3(board[0].length/2);
 
     //   var ground = BABYLON.Mesh.CreateGround("ground", board[0].length*size, board.length*size, 4, scene);
-    var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "img/floor5.jpg", board[0].length*size*1.5, board.length*size*1.5, 50, 0, 0.1, scene, false);
+     ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "img/floor5.jpg", board[0].length*size*1.5, board.length*size*1.5, 50, 0, 0.1, scene, false);
       ground.checkCollisions = true;
       ground.position.y = size/2;
 
